@@ -9,12 +9,22 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <div class="text-sm-right">
+                                <a href="{{ route('participants.generate') }}"
+                                    class="btn btn-success btn-rounded waves-effect waves-light btn-generate"><i
+                                        class="bx bx-loader mr-1"></i> Generate Data</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-responsive" data-pattern="priority-columns">
                         <table class="table table-striped" id="table-data" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th style="width: 5%;">No</th>
-                                    <th>Filename</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jenis</th>
                                     <th>Berkas</th>
                                     <th></th>
                                 </tr>
@@ -27,18 +37,58 @@
         </div>
     </div>
 
-    {{-- Modal Berkas --}}
-    <div class="modal fade" id="fileModal" tabindex="-1" aria-labelledby="fileModalLabel" aria-hidden="true">
+    {{-- Modal KK --}}
+    <div class="modal fade" id="fileModalKK" tabindex="-1" aria-labelledby="fileModalKKLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fileModalLabel">File Viewer</h5>
+                    <h5 class="modal-title" id="fileModalKKLabel">File KK</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <iframe id="fileViewer" src="" style="width: 100%; height: 500px; border: none;"></iframe>
+                    <iframe id="fileViewerKK" src="" style="width: 100%; height: 500px; border: none;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark waves-effect" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal KTP --}}
+    <div class="modal fade" id="fileModalKTP" tabindex="-1" aria-labelledby="fileModalKTPLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fileModalKTPLabel">File KTP</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <iframe id="fileViewerKTP" src="" style="width: 100%; height: 500px; border: none;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark waves-effect" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal PP --}}
+    <div class="modal fade" id="fileModalPP" tabindex="-1" aria-labelledby="fileModalPPLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="fileModalPPLabel">File PP</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <iframe id="fileViewerPP" src="" style="width: 100%; height: 500px; border: none;"></iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark waves-effect" data-dismiss="modal">Close</button>
@@ -63,7 +113,8 @@
                     dataType: 'json'
                 },
                 order: [
-                    [3, 'desc']
+                    [2, 'asc'],
+                    [1, 'asc']
                 ],
                 columnDefs: [{
                     targets: [0],
@@ -80,30 +131,59 @@
                 columns: [{
                     data: 'DT_RowIndex'
                 }, {
-                    data: 'file_nm',
+                    data: 'eng_given_nm',
                 }, {
-                    data: 'save_file_nm',
+                    data: 'category_sys_cd',
                     render: function(data, type, row) {
-                        if (data) {
-                            let fileUrl = BASE_URL + `storage${data}`;
-                            return `
-                                <button class="btn btn-primary btn-view-file" data-url="${fileUrl}" data-toggle="modal" data-target="#fileModal">
-                                    View File 
-                                </button>
-                                <br><br>
-                                ${fileUrl}
-                            `;
+                        if (data == 'C00009') {
+                            return `<span class="badge badge-danger">Atlet<span>`;
+                        } else if (data == 'C00012') {
+                            return `<span class="badge badge-info">Pelatih<span>`;
+                        } else {
+                            return '';
                         }
+                    }
+                }, {
+                    data: 'partic_id',
+                    render: function(data, type, row) {
+                        console.log(row);
+                        let fileKK = BASE_URL + `storage${row.kk.save_file_nm}`;
+                        let fileKTP = BASE_URL + `storage${row.ktp.save_file_nm}`;
+                        let filePP = BASE_URL + `storage${row.pp.save_file_nm}`;
+
+                        return `
+                                <button class="btn btn-primary btn-view-kk" data-url="${fileKK}" data-toggle="modal" data-target="#fileModalKK">
+                                    KK 
+                                </button>
+
+                                <button class="btn btn-primary btn-view-ktp" data-url="${fileKTP}" data-toggle="modal" data-target="#fileModalKTP">
+                                    KTP
+                                </button>
+
+                                <button class="btn btn-primary btn-view-pp" data-url="${filePP}" data-toggle="modal" data-target="#fileModalPP">
+                                    PP 
+                                </button>
+                            `;
                         return '-';
                     }
                 }, {
-                    data: 'file_id',
+                    data: 'bpjs_file_id',
                 }]
             })
 
-            $(document).on('click', '.btn-view-file', function() {
-                let fileUrl = $(this).data('url');
-                $('#fileViewer').attr('src', fileUrl);
+            $(document).on('click', '.btn-view-kk', function() {
+                let fileKK = $(this).data('url');
+                $('#fileViewerKK').attr('src', fileKK);
+            });
+
+            $(document).on('click', '.btn-view-ktp', function() {
+                let fileKTP = $(this).data('url');
+                $('#fileViewerKTP').attr('src', fileKTP);
+            });
+
+            $(document).on('click', '.btn-view-pp', function() {
+                let filePP = $(this).data('url');
+                $('#fileViewerPP').attr('src', filePP);
             });
         })
     </script>
