@@ -114,7 +114,7 @@
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © TAUFIQ POP.
+                            </script> © PEPARNAS.
                         </div>
                     </div>
                 </div>
