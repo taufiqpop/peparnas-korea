@@ -8,7 +8,7 @@
     <meta content="Taufiq Pop" name="description" />
     <meta content="Taufiq Pop" name="author" />
 
-    <link rel="shortcut icon" href="{{ config('app.theme') }}assets/images/favicons.ico">
+    <link rel="shortcut icon" href="{{ config('app.theme') }}assets/images/favicon.ico">
     <link href="{{ config('app.theme') }}assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ config('app.theme') }}assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="{{ config('app.theme') }}assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="{{ config('app.theme') }}assets/images/Pop.png" alt=""
+                                    <img src="{{ config('app.theme') }}assets/images/peparnas.png" alt=""
                                         class="img-fluid">
                                 </div>
                             </div>
@@ -40,8 +40,8 @@
                                 <a href="{{ route('index') }}" target="_blank">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ config('app.theme') }}assets/images/logo/Pop.png"
-                                                alt="" class="rounded-circle" height="75">
+                                            <img src="{{ config('app.theme') }}assets/images/logo/peparnas.png"
+                                                alt="" class="rounded-circle" height="20">
                                         </span>
                                     </div>
                                 </a>

@@ -4,7 +4,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('index');
+// Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::redirect('/', '/login')->name('index');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 Auth::routes();

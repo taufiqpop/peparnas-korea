@@ -8,7 +8,7 @@
     <meta content="Taufiq Pop" name="description" />
     <meta content="Taufiq Pop" name="author" />
 
-    <link rel="shortcut icon" href="assets/images/favicons.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
     <link href="{{ config('app.theme') }}assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ config('app.theme') }}assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="{{ config('app.theme') }}assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"
@@ -31,7 +31,7 @@
                                             <div class="text-center"
                                                 style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                                 <h4 class="mb-2">
-                                                    <img src="assets/images/logo/Pop.png" class="img-fluid mb-4"
+                                                    <img src="assets/images/logo/peparnas.png" class="img-fluid mb-4"
                                                         style="width: 300px; height: auto;">
                                                 </h4>
                                             </div>

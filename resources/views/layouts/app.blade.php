@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Favicons --}}
-    <link rel="shortcut icon" href="{{ config('app.theme') }}assets/images/favicons.ico">
+    <link rel="shortcut icon" href="{{ config('app.theme') }}assets/images/favicon.ico">
 
     @include('layouts.component._style')
     @stack('styles')
@@ -27,11 +27,11 @@
                     <div class="navbar-brand-box">
                         <a href="/" class="logo logo-light" target="_blank">
                             <span class="logo-sm">
-                                <img src="{{ config('app.theme') }}assets/images/logo/Pop.png" alt=""
+                                <img src="{{ config('app.theme') }}assets/images/logo/peparnas.png" alt=""
                                     height="15">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ config('app.theme') }}assets/images/logo/Pop.png" alt=""
+                                <img src="{{ config('app.theme') }}assets/images/logo/peparnas.png" alt=""
                                     height="50">
                             </span>
                         </a>
